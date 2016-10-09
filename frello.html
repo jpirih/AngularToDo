@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Bootstrap linki -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<!-- jQuery -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
+	<!-- angularJs -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+   <script src="frello.js"></script>
+    <!-- css -->
+    <title>Simple task manager</title>
+</head>
+<body>
+   <div class="container" ng-app="frello">
+       <div class="row">
+           <div class="col-sm-6 col-sm-offset-3">
+               <h1>Simple task manager</h1>
+           </div>
+       </div>
+       <div class="row" ng-controller="tasksController">
+           <div class="col-sm-6">
+               <div class="well">
+                  <h3>Dodaj Opravilo</h3>
+                   <input type="text" class="form-control" ng-model="newTask">
+                   <button class="btn btn-success" ng-click="addTask(newTask)">
+                       <span class="glyphicon glyphicon-plus" ></span> 
+                       Dodaj
+                   </button>
+               </div>
+           </div>
+           <!-- seznam opravil -->
+           <div class="col-sm-6">
+               <table class="table table-responsive table-bordered table-condensed">
+                   <thead>
+                        <tr>
+                            <th>Naloga</th>
+                            <th>Opravljeno</th>
+                            <th>Rezultat</th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                       <tr ng-repeat="task in tasks" ng-class="{'bg-success':task.done}">
+                           <td>{{ task.name }}</td>
+                           <td>
+                               <input type="checkbox" class="form-control" ng-model="task.done">
+                           </td>
+                           <td>{{ task.done }}</td>
+                       </tr>
+                   </tbody>
+               </table>
+           </div>
+       </div>
+   </div>
+    
+</body>
+</html>
